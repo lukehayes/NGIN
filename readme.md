@@ -12,4 +12,4 @@ Philosophy
 * Fun
 
 
-**Documentation to follow**
+**Documentation to follow.**
