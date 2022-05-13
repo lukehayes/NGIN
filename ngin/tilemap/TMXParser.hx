@@ -19,6 +19,39 @@ class TMXParser
     }
 
     /**
+      Get all the layers from the TMX File.
+
+      @return Xml
+     **/
+    public function getLayers()
+    {
+        // TODO
+        throw new haxe.Exception("TMXParser::getLayers() not defined yet!");
+    }
+
+    /**
+      Get all the objects from the TMX File.
+
+      @return Xml
+     **/
+    public function getObjects()
+    {
+        // TODO
+        throw new haxe.Exception("TMXParser::getObjects() not defined yet!");
+    }
+
+    /**
+      Get all the entities from the TMX File.
+
+      @return Xml
+     **/
+    public function getEntities()
+    {
+        // TODO
+        throw new haxe.Exception("TMXParser::getEntities() not defined yet!");
+    }
+
+    /**
       Get the root element of the TMX file.
 
       @return Xml
