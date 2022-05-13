@@ -18,7 +18,6 @@ class TMXParser
         this.root    = this.xml.firstElement();
     }
 
-
     /**
       Get the root element of the TMX file.
 
@@ -36,7 +35,7 @@ class TMXParser
 
       @return Xml
      **/
-    public function getAllParseData()
+    public function getAllParseData() : Xml
     {
         return this.xml;
     }
