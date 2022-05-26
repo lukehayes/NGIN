@@ -22,6 +22,7 @@ class NGGame extends hxd.App
 
     public function new(width:Int, height:Int, title:String)
     {
+        super();
         this.width  = width;
         this.height = height;
         this.title  = title;
