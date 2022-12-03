@@ -1,5 +1,5 @@
 -cp ngin
 -lib heaps
 -lib hlsdl
--hl app.hl
+-hl bin/app.hl
 -main ngin.Main
