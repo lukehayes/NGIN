@@ -4,7 +4,7 @@ import hxd.Window;
 import hxd.Math;
 import ecs.component.Component;
 import ecs.component.PositionComponent;
-import ecs.component.ColorComponent;
+import ecs.component.DrawComponent;
 
 class Main extends hxd.App {
 
