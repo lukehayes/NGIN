@@ -10,9 +10,8 @@ class Main extends hxd.App {
 
     var bmp : h2d.Bitmap;
     var g : h2d.Graphics;
-    
-    // FIXME Change this to a hash map!
-    var entities : List<List<Component>>;
+
+    var entities : Map<Int, Map<String, Component>>;
 
 
     override function init() {
@@ -21,47 +20,86 @@ class Main extends hxd.App {
         bmp.x = s2d.width * 0.5;
         bmp.y = s2d.height * 0.5;
         g = new h2d.Graphics(s2d);
-        
 
-        Window.getInstance().title = "app.hl";
-        
-        this.entities = new List();
-        
-        for(i in 0...10)
+        this.entities = [
+            1 => [
+                    "Pos"  => new PositionComponent(100,100),
+                    "Draw" => new DrawComponent(20,20, 0x00FFFF)
+                 ],
+            2 => [
+                    "Pos"  => new PositionComponent(400,300),
+                    "Draw" => new DrawComponent(20,20, 0x330AAF)
+                 ],
+            3 => [
+                    "Pos"  => new PositionComponent(100,300),
+                    "Draw" => new DrawComponent(20,20, 0x11AA11)
+                 ]
+        ];
+
+        var colors = [
+            0x888888,
+            0x4a4a4a,
+            0xCCCCCC
+        ];
+
+
+        for(i in 4...10000)
         {
-            var e1 = new List<Component>();
-            e1.add(new PositionComponent(Math.random(400), Math.random(400)));
-            this.entities.add(e1);
+            var e = new Map<String, Component>();
+            e["Pos"]  = new PositionComponent(hxd.Rand.create().random(600), hxd.Rand.create().random(600));
+            e["Draw"] = new DrawComponent(5,5, colors[hxd.Rand.create().random(3)]);
+
+            this.entities[i] = e;
         }
-        
-        
     }
-    override function update(dt:Float) {
 
+    public function moveEntity(dt:Float) : Void
+    {
+        for(entity in this.entities)
+        {
+            var pos  = cast(entity["Pos"], PositionComponent);
+            pos.x += 1 * pos.speed * dt;
+            pos.y += 1 * pos.speed * dt;
 
-        bmp.rotation += 0.1;
-        
-        this.entities.first().add(new ColorComponent());
-        
-        g.clear();
-        g.beginFill(0xFF99D748);
-        g.drawCircle(bmp.rotation * 10.0,400,100);
-            
-            for (entity in this.entities)
+            if(pos.x <= 0 || pos.x > Window.getInstance().width)
             {
-                for(comp in entity)
-                {
-                    var c = cast(comp, PositionComponent);
+                pos.speed = -pos.speed;
+            }
 
-                    comp.update(hxd.Timer.dt);
-                    
-                    g.setColor(cast(Math.random(2255)));
-                    g.drawRect(c.position.x, c.position.y, 10,10);
-                    
-                }
+            if(pos.y <= 0 || pos.y > Window.getInstance().height)
+            {
+                pos.speed = -pos.speed;
             }
 
 
+        }
+    }
+
+    public function drawEntity() : Void
+    {
+        g.beginFill(0xFF99D748);
+        for(entity in this.entities)
+        {
+            var pos  = cast(entity["Pos"], PositionComponent);
+            var draw = cast(entity["Draw"], DrawComponent);
+            g.setColor(draw.color);
+            g.drawRect(pos.x,pos.y, draw.w, draw.h);
+        }
+        g.endFill();
+    }
+
+
+    override function update(dt:Float) {
+
+        bmp.rotation += 0.1;
+
+        moveEntity(dt);
+
+
+        g.clear();
+        drawEntity();
+        g.beginFill(0xFF99D748);
+        g.drawCircle(bmp.rotation * 10.0,400,100);
         g.endFill();
     }
     static function main() {

@@ -7,9 +7,9 @@ import ecs.component.Component;
  **/
 class DrawComponent extends Component
 {
-    var color : Int = 0xFF00FF;
-    var w     : Int;
-    var h     : Int;
+    public var color : Int = 0xFF00FF;
+    public var w     : Int;
+    public var h     : Int;
 
     public function new(w:Int = 10, h:Int = 10, color:Int = 0xFF00FF) 
     {
