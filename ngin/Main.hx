@@ -19,7 +19,7 @@ class Main extends hxd.App {
 
         genSys = new GeneralSystem();
 
-        genSys.initEntities(10000);
+        genSys.initEntities(100);
     }
 
     override function update(dt:Float) {
