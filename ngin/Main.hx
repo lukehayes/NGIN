@@ -8,17 +8,12 @@ import ecs.GeneralSystem;
 
 class Main extends hxd.App {
 
-    var bmp : h2d.Bitmap;
     var g : h2d.Graphics;
-
     var genSys : GeneralSystem;
-
 
     override function init() {
         g = new h2d.Graphics(s2d);
-
         genSys = new GeneralSystem();
-
         genSys.initEntities(100);
     }
 
@@ -32,6 +27,7 @@ class Main extends hxd.App {
             genSys.drawSystem(g);
         g.endFill();
     }
+
     static function main() {
         new Main();
     }
