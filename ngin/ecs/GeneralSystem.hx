@@ -4,7 +4,7 @@ import ecs.System;
 
 import hxd.Window;
 import ecs.component.Component;
-import ecs.component.PositionComponent;
+import ecs.component.TransformComponent;
 import ecs.component.DrawComponent;
 
 /**
@@ -21,18 +21,18 @@ class GeneralSystem extends System
     {
         for(entity in entities)
         {
-            var pos  = cast(entity["Pos"], PositionComponent);
-            pos.x += 1 * pos.speed * dt;
-            pos.y += 1 * pos.speed * dt;
+            var tf  = cast(entity["Transform"], TransformComponent);
+            tf.x += 1 * tf.speed * dt;
+            tf.y += 1 * tf.speed * dt;
 
-            if(pos.x <= 0 || pos.x > Window.getInstance().width)
+            if(tf.x <= 0 || tf.x > Window.getInstance().width)
             {
-                pos.speed = -pos.speed;
+                tf.speed = -tf.speed;
             }
 
-            if(pos.y <= 0 || pos.y > Window.getInstance().height)
+            if(tf.y <= 0 || tf.y > Window.getInstance().height)
             {
-                pos.speed = -pos.speed;
+                tf.speed = -tf.speed;
             }
 
         }
@@ -44,10 +44,9 @@ class GeneralSystem extends System
         g.beginFill(0xFF99D748);
         for(entity in entities)
         {
-            var pos  = cast(entity["Pos"], PositionComponent);
-            var draw = cast(entity["Draw"], DrawComponent);
-            g.setColor(draw.color);
-            g.drawRect(pos.x,pos.y, draw.w, draw.h);
+            var tf  = cast(entity["Transform"], TransformComponent);
+            g.setColor(tf.color);
+            g.drawRect(tf.x, tf.y, tf.w, tf.h);
         }
         g.endFill();
     }

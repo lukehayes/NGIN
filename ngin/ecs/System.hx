@@ -1,7 +1,7 @@
 package ecs;
 
 import ecs.component.Component;
-import ecs.component.PositionComponent;
+import ecs.component.TransformComponent;
 import ecs.component.DrawComponent;
 
 /**
@@ -28,8 +28,10 @@ abstract class System
         {
             var rx = hxd.Rand.create().random(600);
             var ry = hxd.Rand.create().random(600);
-            var m = ["Pos"  => new PositionComponent(rx,ry),
-                    "Draw" => new DrawComponent(2,2, 0x00FFFF)];
+            var m = [
+                "Transform"  => new TransformComponent(rx,ry,10,10),
+                "Draw"       => new DrawComponent(2,2, 0x00FFFF)
+            ];
 
 
             this.entities[i] = m;
