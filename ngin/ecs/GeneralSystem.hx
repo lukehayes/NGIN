@@ -5,7 +5,6 @@ import ecs.System;
 import hxd.Window;
 import ecs.component.Component;
 import ecs.component.TransformComponent;
-import ecs.component.DrawComponent;
 
 /**
   General system for testing all components. Will remove in future.
