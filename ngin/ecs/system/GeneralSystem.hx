@@ -1,6 +1,4 @@
-package ecs;
-
-import ecs.System;
+package ecs.system;
 
 import hxd.Window;
 import ecs.component.Component;

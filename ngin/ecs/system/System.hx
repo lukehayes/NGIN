@@ -1,4 +1,4 @@
-package ecs;
+package ecs.system;
 
 import ecs.component.Component;
 import ecs.component.TransformComponent;
