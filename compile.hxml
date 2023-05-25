@@ -3,3 +3,4 @@
 -lib hlsdl
 -hl bin/app.hl
 -main ngin.Main
+-D no-deprecation-warnings
