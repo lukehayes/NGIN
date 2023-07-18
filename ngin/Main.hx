@@ -3,14 +3,16 @@ package ngin;
 import hxd.Window;
 import hxd.Math;
 import h2d.Bitmap;
+import h3d.scene.*;
 
-import ngin.gfx.NGSprite;
+import Random;
+
 
 class Main extends hxd.App {
 
-    var bmp : h2d.Bitmap;
-    var spr : NGSprite;
-    var c   : Float;
+    var c : Float = 0.0;
+    var obj : Mesh;
+    var objs : Array<Mesh> = [];
 
     function new() 
     {
@@ -20,18 +22,35 @@ class Main extends hxd.App {
 
     override function init() 
     {
-        this.spr = new NGSprite(0xFF00FF, 100,100,s2d);
-        c = 0.0;
-        spr.x = 300;
-        spr.y = 300;
+
+        var texture = h3d.mat.Texture.fromColor(0xFFFFFFFF);
+        
+        var primitive = new h3d.prim.Cube();
+        primitive.translate(-0.5, -0.5, -0.5);
+        this.obj = new Mesh(primitive, null, s3d);
+
+        var n = 5;
+
+        for(i in 1...10)
+        {
+            var rx = Random.float(-n, n);
+            var ry = Random.float(-n, n);
+            var rz = Random.float(-n, n);
+            trace(rx,ry,rz);
+            var primitive = new h3d.prim.Cube();
+            primitive.translate(rx, ry, rz);
+            this.objs.push(new Mesh(primitive, null, s3d));
+        }
     }
 
     override function update(dt:Float) 
     {
         //trace(hxd.Timer.fps());
         this.c += 0.1;
-        spr.x = spr.x + Math.cos(this.c);
-        spr.y = spr.y + Math.sin(this.c);
+
+        var matrix = new h3d.Matrix();
+        matrix.setPosition(new h3d.Vector(0,0, -Math.sin(c) * 100));
+        s3d.camera.setTransform(matrix);
     }
 
     static function main() {
