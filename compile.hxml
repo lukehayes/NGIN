@@ -2,5 +2,5 @@
 -lib heaps
 -lib hlsdl random
 -hl bin/app.hl
--main ngin.Main
+-main ngin.MainTest
 -D no-deprecation-warnings
