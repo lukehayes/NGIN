@@ -10,6 +10,7 @@ import Random;
 
 class Main extends hxd.App {
 
+    var c : Float = 0.0;
 
     function new() 
     {
@@ -22,7 +23,8 @@ class Main extends hxd.App {
 
     override function update(dt:Float) 
     {
-        trace(hxd.Timer.fps());
+        //trace(hxd.Timer.fps());
+        this.c += 0.1;
     }
 
     static function main() {
