@@ -1,4 +1,4 @@
-package ngin;
+package ngin.core;
 
 /**
   Root class for most of the objects used inside the engine
