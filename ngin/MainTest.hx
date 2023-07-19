@@ -49,7 +49,7 @@ class MainTest extends hxd.App {
             primitive.addUVs();
             primitive.translate(rx, ry, rz);
 
-            var texture = hxd.Res.Cats.toby.toTexture();
+            var texture = hxd.Res.cats.toby.toTexture();
             var material = h3d.mat.Material.create(texture);
             material.color = new h3d.Vector(1,1,1,1);
 
