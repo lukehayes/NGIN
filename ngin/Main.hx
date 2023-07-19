@@ -1,12 +1,5 @@
 package ngin;
 
-import hxd.Window;
-import hxd.Math;
-import h2d.Bitmap;
-import h3d.scene.*;
-
-import Random;
-
 
 class Main extends hxd.App {
 
