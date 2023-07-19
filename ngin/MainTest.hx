@@ -18,6 +18,8 @@ class MainTest extends hxd.App {
     var sz = null;
 
     var light = null;
+    var txt = null;
+    var cb = null;
 
     function new() 
     {
@@ -47,23 +49,19 @@ class MainTest extends hxd.App {
             primitive.addUVs();
             primitive.translate(rx, ry, rz);
 
-            var texture = hxd.Res.Cats.grumpySmall.toTexture();
+            var texture = hxd.Res.Cats.toby.toTexture();
             var material = h3d.mat.Material.create(texture);
-            material.color = new h3d.Vector(
-                    Random.float(0,1),
-                    Random.float(0,1),
-                    Random.float(0,1),
-                    0.0
-                    );
+            material.color = new h3d.Vector(1,1,1,1);
 
             var mesh = new Mesh(primitive, material, s3d);
             mesh.rotate(rx, ry, rz);
             this.objs.push(mesh);
         }
 
-        this.light = new h3d.scene.fwd.DirLight(new h3d.Vector(0.5, 0.5, -0.5), s3d);
+        this.light = new h3d.scene.fwd.DirLight(new h3d.Vector(0,0,0), s3d);
+        this.light.enableSpecular = true;
 
-        var cb = new h2d.CheckBox(s2d);
+        this.cb = new h2d.CheckBox(s2d);
             cb.text = "CHECK BOX";
             cb.enable = true;
 
@@ -80,20 +78,35 @@ class MainTest extends hxd.App {
             sz.x = 100;
             sz.y = 100;
             sz.backgroundColor = 0xFF00FFFF;
+
+        this.txt = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
+        this.txt.text = "Text Example";
+        this.txt.y = 300;
     }
 
     override function update(dt:Float) 
     {
         //trace(hxd.Timer.fps());
-        this.c += 0.00001;
+        this.c += 0.001;
+
+        var sx = this.sx.value * 100.0;
+        var sy = this.sy.value * 100.0;
+        var sz = this.sz.value * 100.0;
 
         var matrix = new h3d.Matrix();
-        matrix.setPosition(new h3d.Vector(Math.sin(c) * 100.0,Math.cos(c),0));
+        matrix.setPosition(new h3d.Vector(-50.0 + sx,sy,sz));
+
+        if(this.cb.selected)
+        {
+            this.light.enableSpecular = true;
+        }else
+        {
+            this.light.enableSpecular = false;
+        }
 
         var lightMatrix = new h3d.Matrix();
-        lightMatrix.setPosition(new h3d.Vector(this.sx.value * 100, this.sy.value * 100,this.sz.value * 100));
-        this.light.setTransform(lightMatrix);
-
+        this.light.rotate(Math.sin(c) / 100.0, Math.cos(c) / 100.0, Math.sin(c) / 100.0);
+        
         s3d.camera.setTransform(matrix);
     }
 
