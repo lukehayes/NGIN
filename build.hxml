@@ -1,6 +1,7 @@
--cp ngin
+-cp  src
 -lib heaps
--lib hlsdl
+-lib hlsdl random
 -hl bin/app.hl
--main ngin.Main
+-main game.Main
 -D no-deprecation-warnings
+-D debug
