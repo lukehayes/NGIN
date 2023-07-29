@@ -1,4 +1,4 @@
-package ngin;
+package test;
 
 import hxd.Window;
 import hxd.Math;
