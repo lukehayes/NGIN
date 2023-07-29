@@ -1,9 +1,13 @@
-package ngin;
+package game;
 
-
+/**
+  Main entry point for the game.
+**/
 class Main extends hxd.App {
 
     var c : Float = 0.0;
+
+    var txt : h2d.Text;
 
     function new() 
     {
@@ -12,11 +16,19 @@ class Main extends hxd.App {
 
     override function init() 
     {
+        #if debug
+            this.txt = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
+            this.txt.scaleX = 3;
+            this.txt.scaleY = 3;
+        #end
     }
 
     override function update(dt:Float) 
     {
-        //trace(hxd.Timer.fps());
+        #if debug
+            this.txt.text =  Std.string(hxd.Timer.fps());
+        #end
+
         this.c += 0.1;
     }
 

@@ -2,5 +2,6 @@
 -lib heaps
 -lib hlsdl random
 -hl bin/app.hl
--main ngin.Main
+-main game.Main
 -D no-deprecation-warnings
+-D debug
