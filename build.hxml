@@ -1,6 +1,6 @@
--cp  ngin
+-cp  src
 -lib heaps
 -lib hlsdl random
 -hl bin/app.hl
--main test.MainTest
+-main ngin.Main
 -D no-deprecation-warnings
