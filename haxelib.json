@@ -1,0 +1,14 @@
+{
+  "name": "Ngin",
+  "url" : "https://github.com/lukehayes/ngin/",
+  "license": "MIT",
+  "tags": ["Framework", "Heaps", "Haxe"],
+  "description": "A small 'engine' for my personal game projects. In reality its a wrapper for heaps, inspried by HaxeFlixel.",
+  "version": "0.0.1",
+  "classPath": "src/",
+  "releasenote": "Added simple rendering class.",
+  "contributors": ["LDH"],
+  "dependencies": {
+    "random": ""
+  }
+}
