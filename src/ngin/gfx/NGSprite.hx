@@ -9,7 +9,15 @@ class NGSprite extends h2d.Bitmap
     var w : Int;
     var h : Int;
 
-    public function new(color:Int, w:Int, h:Int, scene:h2d.Scene)
+    /**
+     * Constructor.
+     *
+     * @param scene  The scene to be drawn to.
+     * @param color  The color of the sprite.
+     * @param width  The width of the sprite.
+     * @param height The height of the sprite.
+     */
+    public function new(scene: h2d.Scene, color:Int = 0xFF00FF, w:Int = 16, h:Int = 16)
     {
         super(null, scene);
         this.w = w;
@@ -23,9 +31,6 @@ class NGSprite extends h2d.Bitmap
       */
     public function get() : h2d.Tile
     {
-        trace(this.w);
-        trace(this.h);
-
         return Tile.fromColor(
                 0xFFFF33,
                 this.w,
