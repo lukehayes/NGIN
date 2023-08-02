@@ -1,8 +1,9 @@
 package ngin.core;
 
 import ngin.gfx.NGSprite;
+import ngin.core.NGBasic;
 
-class NGEntity {
+class NGEntity extends NGBasic {
 
     // Graphical object
     public var sprite : NGSprite;
@@ -25,6 +26,7 @@ class NGEntity {
     public var dy : Float;
 
     public function new() {
+        super();
         this.sprite = new NGSprite();
     }
 
