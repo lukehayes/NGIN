@@ -24,6 +24,7 @@ class Renderer extends h2d.Graphics
     */
     public function drawPixel(x:Int, y: Int, color : Int = 0xFF00FF, alpha : Float = 1.0)
     {
+        this.clear();
         this.beginFill(color, alpha);
         this.drawRect(x,y,1,1);
         this.endFill();
