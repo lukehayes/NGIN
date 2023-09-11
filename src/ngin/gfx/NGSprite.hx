@@ -2,7 +2,6 @@ package ngin.gfx;
 
 import h2d.Tile;
 import h2d.Bitmap;
-import h2d.Scene;
 
 class NGSprite extends h2d.Bitmap
 {
