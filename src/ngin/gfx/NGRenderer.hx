@@ -5,7 +5,7 @@ package ngin.gfx;
 *
 * @since 0.0.1
 */
-class Renderer extends h2d.Graphics
+class NGRenderer extends h2d.Graphics
 {
     public function new(scene: h2d.Scene)
     {
