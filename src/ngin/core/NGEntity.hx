@@ -25,9 +25,14 @@ class NGEntity extends NGBasic {
     public var dx : Float;
     public var dy : Float;
 
-    public function new() {
+    /**
+     * Constructor.
+     *
+     * @param scene  The scene to be drawn to.
+     */
+    public function new(scene: h2d.Scene) {
         super();
-        this.sprite = new NGSprite();
+        this.sprite = new NGSprite(scene);
     }
 
     public function update(dt:Float) {

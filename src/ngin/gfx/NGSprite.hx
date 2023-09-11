@@ -19,7 +19,8 @@ class NGSprite extends h2d.Bitmap
      */
     public function new(scene: h2d.Scene, color:Int = 0xFF00FF, w:Int = 16, h:Int = 16)
     {
-        super(null, scene);
+        var tile = Tile.fromColor(0xFF00FF, w,h);
+        super(tile, scene);
         this.w = w;
         this.h = h;
     }
