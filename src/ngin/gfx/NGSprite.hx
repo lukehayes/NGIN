@@ -7,6 +7,7 @@ class NGSprite extends h2d.Bitmap
 {
     var w : Int;
     var h : Int;
+    var tileSize: Int = 16;
 
     /**
      * Constructor.
@@ -18,10 +19,11 @@ class NGSprite extends h2d.Bitmap
      * @param width  The width of the sprite.
      * @param height The height of the sprite.
      */
-    public function new(scene: h2d.Scene, x:Float, y:Float, color:Int = 0xFF00FF, w:Int = 16, h:Int = 16)
+    public function new(scene: h2d.Scene, x:Float, y:Float, color:Int = 0xFF00FF, w:Int = 1, h:Int = 1)
     {
-        var tile = Tile.fromColor(color, w,h);
+        var tile = hxd.Res.loader.load("pixelstar.png").toTile();
         super(tile, scene);
+        //tile.scaleToSize(this.tileSize * w, this.tileSize * h);
         this.x = x;
         this.y = y;
         this.w = w;
@@ -36,7 +38,7 @@ class NGSprite extends h2d.Bitmap
     public function get() : h2d.Tile
     {
         return Tile.fromColor(
-                this.color,
+                0xFF0011,
                 this.w,
                 this.h
         );
