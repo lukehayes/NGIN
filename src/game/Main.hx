@@ -1,5 +1,8 @@
 package game;
 
+import ngin.gfx.NGSprite;
+
+
 /**
   Main entry point for the game.
 **/
@@ -8,6 +11,8 @@ class Main extends hxd.App {
     var c : Float = 0.0;
 
     var txt : h2d.Text;
+
+    var sprite : NGSprite;
 
     function new() 
     {
@@ -21,6 +26,8 @@ class Main extends hxd.App {
             this.txt.scaleX = 3;
             this.txt.scaleY = 3;
         #end
+
+        this.sprite = new NGSprite(s2d, 100,100);
     }
 
     override function update(dt:Float) 
