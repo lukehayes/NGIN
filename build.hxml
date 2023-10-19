@@ -5,3 +5,4 @@
 -main game.Main
 -D no-deprecation-warnings
 -D debug
+-D windowSize=1920x1080
