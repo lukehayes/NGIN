@@ -1,7 +1,8 @@
 package game;
 
 import ngin.gfx.NGSprite;
-
+import ngin.gfx.NGBitmap;
+import ngin.util.Helper;
 
 /**
   Main entry point for the game.
@@ -13,6 +14,8 @@ class Main extends hxd.App {
     var fpsText : h2d.Text;
 
     var sprite : NGSprite;
+
+    var bmp : NGBitmap;
 
     function new() 
     {
@@ -28,6 +31,11 @@ class Main extends hxd.App {
         #end
 
         this.sprite = new NGSprite(s2d, 300,100, "pixelstar");
+        this.bmp = new NGBitmap(0x00FF00, s2d);
+
+        var bmp2 = new NGBitmap(0x00FF00,100,100,200,200, s2d);
+        bmp2.x = 100;
+        bmp2.x = 100;
     }
 
     override function update(dt:Float) 
@@ -35,9 +43,11 @@ class Main extends hxd.App {
         #if debug
             this.fpsText.text =  Std.string(hxd.Timer.fps());
         #end
-
         this.c += 0.1;
+
+        Helper.getKeyInput(this.bmp, dt);
     }
+
 
     static function main() {
 
