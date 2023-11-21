@@ -27,7 +27,7 @@ class Main extends hxd.App {
             this.txt.scaleY = 3;
         #end
 
-        this.sprite = new NGSprite(s2d, 100,100);
+        this.sprite = new NGSprite(s2d, 300,100, "pixelstar");
     }
 
     override function update(dt:Float) 
