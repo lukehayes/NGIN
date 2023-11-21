@@ -2,7 +2,7 @@ package game;
 
 import ngin.gfx.NGSprite;
 import ngin.gfx.NGBitmap;
-import ngin.util.Helper;
+import ngin.util.NGHelper;
 
 /**
   Main entry point for the game.
@@ -45,7 +45,7 @@ class Main extends hxd.App {
         #end
         this.c += 0.1;
 
-        Helper.getKeyInput(this.bmp, dt);
+        NGHelper.getKeyInput(this.bmp, dt);
     }
 
 
