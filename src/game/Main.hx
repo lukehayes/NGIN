@@ -10,7 +10,7 @@ class Main extends hxd.App {
 
     var c : Float = 0.0;
 
-    var txt : h2d.Text;
+    var fpsText : h2d.Text;
 
     var sprite : NGSprite;
 
@@ -22,9 +22,9 @@ class Main extends hxd.App {
     override function init() 
     {
         #if debug
-            this.txt = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
-            this.txt.scaleX = 3;
-            this.txt.scaleY = 3;
+            this.fpsText = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
+            this.fpsText.scaleX = 3;
+            this.fpsText.scaleY = 3;
         #end
 
         this.sprite = new NGSprite(s2d, 300,100, "pixelstar");
@@ -33,7 +33,7 @@ class Main extends hxd.App {
     override function update(dt:Float) 
     {
         #if debug
-            this.txt.text =  Std.string(hxd.Timer.fps());
+            this.fpsText.text =  Std.string(hxd.Timer.fps());
         #end
 
         this.c += 0.1;
