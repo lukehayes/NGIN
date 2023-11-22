@@ -30,12 +30,11 @@ class Main extends hxd.App {
             this.fpsText.scaleY = 3;
         #end
 
-        this.sprite = new NGSprite(s2d, 300,100, "pixelstar");
-        this.bmp = new NGBitmap(0x00FF00, s2d);
+        this.sprite = new NGSprite(s2d, 300,100, "cats/smile");
+        //this.bmp = new NGBitmap(0x00FF00, s2d);
 
-        var bmp2 = new NGBitmap(0x00FF00,100,100,200,200, s2d);
-        bmp2.x = 100;
-        bmp2.x = 100;
+        trace(this.sprite.x);
+        trace(this.sprite.getTile());
     }
 
     override function update(dt:Float) 
@@ -43,9 +42,10 @@ class Main extends hxd.App {
         #if debug
             this.fpsText.text =  Std.string(hxd.Timer.fps());
         #end
+
         this.c += 0.1;
 
-        NGHelper.getKeyInput(this.bmp, dt);
+        NGHelper.getKeyInput(this.sprite, dt);
     }
 
 

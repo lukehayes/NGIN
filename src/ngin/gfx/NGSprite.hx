@@ -17,19 +17,27 @@ class NGSprite extends h2d.Bitmap
     /**
      * Constructor.
      *
+     * @param scene  The scene to be drawn to.
      * @param x      The sprites x position.
      * @param y      The sprites y position.
+     * @param file   The path of the image to render.
      * @param width  The width of the sprite.
      * @param height The height of the sprite.
      * @param color  The color of the sprite.
-     * @param file   The path of the image to render.
-     * @param scene  The scene to be drawn to.
      */
-    public function new(x:Float, y:Float, w:Int = 1, h:Int = 1, color: Int = 0xFF00FF, file : String, scene: h2d.Scene)
+    public function new(scene:h2d.Scene, x:Float, y:Float, file:String = "", w:Int = 10, h:Int = 10, color: Int = 0xFF00FF)
     {
-        var sprite_file = file + ".png";
-        var tile = hxd.Res.loader.load(sprite_file).toTile();
-        super(tile, scene);
+        if(file == "")
+        {
+            this.tile = Tile.fromColor(color, w,h);
+        }else
+        {
+            var sprite_file = file + ".png";
+            this.tile = hxd.Res.loader.load(sprite_file).toTile();
+        }
+
+        super(this.tile, scene);
+
         //tile.scaleToSize(this.tileSize * w, this.tileSize * h);
         this.x = x;
         this.y = y;
