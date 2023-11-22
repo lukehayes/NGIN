@@ -3,7 +3,7 @@ package ngin.util;
 /**
   Static helper functions are contained in this file.
 **/
-class Helper
+class NGHelper
 {
     /**
       Get input from the W,A,S,D keys and apply this to a
