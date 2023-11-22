@@ -25,7 +25,7 @@ class NGSprite extends h2d.Bitmap
      * @param height The height of the sprite.
      * @param color  The color of the sprite.
      */
-    public function new(scene:h2d.Scene, x:Float, y:Float, file:String = "", w:Int = 10, h:Int = 10, color: Int = 0xFF00FF)
+    public function new(scene:h2d.Scene, x:Float = 10, y:Float = 10, file:String = "", w:Int = 10, h:Int = 10, color: Int = 0xFF00FF)
     {
         if(file == "")
         {
@@ -41,8 +41,8 @@ class NGSprite extends h2d.Bitmap
         //tile.scaleToSize(this.tileSize * w, this.tileSize * h);
         this.x = x;
         this.y = y;
-        this.w = w;
-        this.h = h;
+        this.width  = w;
+        this.height = h;
 
         // The parent class Drawable holds the property color which is a
         // h3d.Vector. Here we convert it from an int to a h3d.Vector.
