@@ -3,6 +3,9 @@ package ngin.gfx;
 import h2d.Tile;
 import h2d.Bitmap;
 
+/**
+  Class for holding a single tile or sprite. Best used for static images.
+**/
 class NGSprite extends h2d.Bitmap
 {
     /** Width of the NGSprite. */
@@ -17,7 +20,7 @@ class NGSprite extends h2d.Bitmap
     /**
      * Constructor.
      *
-     * @param scene  The scene to be drawn to.
+     * @param parent  The scene to be drawn to.
      * @param x      The sprites x position.
      * @param y      The sprites y position.
      * @param file   The path of the image to render.
@@ -25,28 +28,38 @@ class NGSprite extends h2d.Bitmap
      * @param height The height of the sprite.
      * @param color  The color of the sprite.
      */
-    public function new(scene:h2d.Scene, x:Float = 10, y:Float = 10, file:String = "", w:Int = 10, h:Int = 10, color: Int = 0xFF00FF)
+    public function new(?parent:h2d.Object, x:Float = 10, y:Float = 10, ?file:String, ?w:Int, ?h:Int, color: Int = 0xFF00FF)
     {
-        if(file == "")
+        if(file == null)
         {
-            this.tile = Tile.fromColor(color, w,h);
-        }else
+            super(h2d.Tile.fromColor(color, w,h), parent);
+        }else 
         {
             var sprite_file = file + ".png";
             this.tile = hxd.Res.loader.load(sprite_file).toTile();
+            super(this.tile, parent);
         }
 
-        super(this.tile, scene);
+        // TODO The default sizing could probably be written better but works for now.
+        // ----
+        if(w == null || h == null)
+        {
+            this.width  = this.tile.width;
+            this.height  = this.tile.height;
+        }else
+        {
+            tile.setSize(this.tileSize * w, this.tileSize * h);
+            super(this.tile, parent);
+        }
 
-        //tile.scaleToSize(this.tileSize * w, this.tileSize * h);
         this.x = x;
         this.y = y;
-        this.width  = w;
-        this.height = h;
 
         // The parent class Drawable holds the property color which is a
         // h3d.Vector. Here we convert it from an int to a h3d.Vector.
-        this.color = h3d.Vector.fromColor(color);
+        // --------------------------------------------------------------
+        // FIXME Line below makes things invisible. Fix later.
+        //this.color = h3d.Vector.fromColor(color);
     }
 
     /**
