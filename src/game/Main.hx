@@ -15,8 +15,6 @@ class Main extends hxd.App {
 
     var sprite : NGSprite;
 
-    var bmp : NGBitmap;
-
     function new() 
     {
         super();
@@ -30,11 +28,12 @@ class Main extends hxd.App {
             this.fpsText.scaleY = 3;
         #end
 
-        this.sprite = new NGSprite(s2d, 300,100, "cats/smile");
-        //this.bmp = new NGBitmap(0x00FF00, s2d);
-
-        trace(this.sprite.x);
-        trace(this.sprite.getTile());
+        for(i in 0...10)
+        {
+            var rx = Std.random(800);
+            var ry = Std.random(600);
+            this.sprite = new NGSprite(s2d, rx,ry, "debug32");
+        }
     }
 
     override function update(dt:Float) 
