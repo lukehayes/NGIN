@@ -15,7 +15,7 @@ class NGSprite extends h2d.Bitmap
     var h : Int;
 
     /** Size of the NGSprite tile. */
-    var tileSize: Int = 16;
+    var tileSize: Int = 32;
 
     /**
      * Constructor.
@@ -28,12 +28,12 @@ class NGSprite extends h2d.Bitmap
      * @param height The height of the sprite.
      * @param color  The color of the sprite.
      */
-    public function new(?parent:h2d.Object, x:Float = 10, y:Float = 10, ?file:String, ?w:Int, ?h:Int, color: Int = 0xFF00FF)
+    public function new(?parent:h2d.Object, x:Float = 10, y:Float = 10, ?file:String,scale:Int = 1,  ?w:Int, ?h:Int, color: Int = 0xFF00FF)
     {
         if(file == null)
         {
             super(h2d.Tile.fromColor(color, w,h), parent);
-        }else 
+        }else
         {
             var sprite_file = file + ".png";
             this.tile = hxd.Res.loader.load(sprite_file).toTile();
@@ -48,12 +48,13 @@ class NGSprite extends h2d.Bitmap
             this.height  = this.tile.height;
         }else
         {
-            tile.setSize(this.tileSize * w, this.tileSize * h);
             super(this.tile, parent);
         }
 
         this.x = x;
         this.y = y;
+        this.width  = this.tile.width  * scale;
+        this.height = this.tile.height * scale;
 
         // The parent class Drawable holds the property color which is a
         // h3d.Vector. Here we convert it from an int to a h3d.Vector.
