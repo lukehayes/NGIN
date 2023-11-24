@@ -5,13 +5,15 @@ import ngin.gfx.NGSprite;
 /**
   A simple player class with basic movement for debugging.
 **/
-class NGPlayer
+class NGPlayer extends NGSprite
 {
-    var sprite : NGSprite;
-
     public function new(parent: h2d.Object, x:Int, y:Int,file: String)
     {
-        this.sprite = new NGSprite(parent, x,y, file);
-        trace("Instance of NGPlayer Created");
+        super(parent, x,y,0xFFFFFF,0.5,file);
+    }
+
+    public function update(dt:Float)
+    {
+        ngin.util.NGHelper.getKeyInput(this,dt);
     }
 }
