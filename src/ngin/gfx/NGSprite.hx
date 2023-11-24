@@ -28,26 +28,18 @@ class NGSprite extends h2d.Bitmap
      * @param height The height of the sprite.
      * @param color  The color of the sprite.
      */
-    public function new(?parent:h2d.Object, x:Float = 0, y:Float = 0, ?file:String,scale:Int = 1,  ?w:Int, ?h:Int, color: Int = 0xFF00FF)
+    public function new(?parent:h2d.Object, x:Float = 0, y:Float = 0, color:Int = 0xFF00FF, scale:Int = 1, ?file:String)
     {
         if(file == null)
         {
-            super(h2d.Tile.fromColor(color, w,h), parent);
+            this.tile   = h2d.Tile.fromColor(color, tileSize,tileSize);
+            this.width  = this.tile.width;
+            this.height = this.tile.height;
+            super(tile,parent);
         }else
         {
             var sprite_file = file + ".png";
             this.tile = hxd.Res.loader.load(sprite_file).toTile();
-            super(this.tile, parent);
-        }
-
-        // TODO The default sizing could probably be written better but works for now.
-        // ----
-        if(w == null || h == null)
-        {
-            this.width  = this.tile.width;
-            this.height  = this.tile.height;
-        }else
-        {
             super(this.tile, parent);
         }
 
