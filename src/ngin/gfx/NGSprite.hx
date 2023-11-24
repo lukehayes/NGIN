@@ -28,7 +28,7 @@ class NGSprite extends h2d.Bitmap
      * @param height The height of the sprite.
      * @param color  The color of the sprite.
      */
-    public function new(?parent:h2d.Object, x:Float = 0, y:Float = 0, color:Int = 0xFF00FF, scale:Int = 1, ?file:String)
+    public function new(?parent:h2d.Object, x:Float = 0, y:Float = 0, color:Int = 0xFF00FF, scale:Float = 1, ?file:String)
     {
         if(file == null)
         {
