@@ -28,12 +28,7 @@ class Main extends hxd.App {
             this.fpsText.scaleY = 3;
         #end
 
-        for(i in 0...10)
-        {
-            var rx = Std.random(800);
-            var ry = Std.random(600);
-            this.sprite = new NGSprite(s2d, rx,ry, "debug32");
-        }
+        this.sprite = new NGSprite(s2d, 0,0, "debug32");
     }
 
     override function update(dt:Float) 
