@@ -1,18 +1,16 @@
 package game;
 
 import ngin.gfx.NGSprite;
-import ngin.gfx.NGBitmap;
-import ngin.util.NGHelper;
-import ngin.util.NGVector2;
+import ngin.util.NGPlayer;
 
 /**
   Main entry point for the game.
 **/
 class Main extends hxd.App {
 
-    var c : Float = 0.0;
-
     var sprite : NGSprite;
+
+    var player : NGPlayer;
 
     function new()
     {
@@ -21,10 +19,11 @@ class Main extends hxd.App {
 
     override function init()
     {
-        
         var overlay = new ngin.util.NGDebugOverlay(s2d);
 
-        this.sprite = new NGSprite(s2d, 0,0, 0xFF00FF, "pixelstar");
+        this.sprite = new NGSprite(s2d, 100,100, 0xFF00FF, "cats/toby");
+
+        this.player = new NGPlayer(s2d,100,100, "cats/smile");
     }
 
     override function render(e: h3d.Engine)
@@ -34,12 +33,7 @@ class Main extends hxd.App {
 
     override function update(dt:Float)
     {
-
-        trace("Updating From Main...");
-
-        this.c += 0.1;
-
-        NGHelper.getKeyInput(this.sprite, dt);
+        this.player.update(dt);
     }
 
 
