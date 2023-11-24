@@ -3,6 +3,7 @@ package game;
 import ngin.gfx.NGSprite;
 import ngin.gfx.NGBitmap;
 import ngin.util.NGHelper;
+import ngin.util.NGVector2;
 
 /**
   Main entry point for the game.
@@ -11,31 +12,30 @@ class Main extends hxd.App {
 
     var c : Float = 0.0;
 
-    var fpsText : h2d.Text;
-
     var sprite : NGSprite;
 
-    function new() 
+    function new()
     {
         super();
     }
 
-    override function init() 
+    override function init()
     {
-        #if debug
-            this.fpsText = new h2d.Text(hxd.res.DefaultFont.get(), s2d);
-            this.fpsText.scaleX = 3;
-            this.fpsText.scaleY = 3;
-        #end
+        
+        var overlay = new ngin.util.NGDebugOverlay(s2d);
 
-        this.sprite = new NGSprite(s2d, 0,0, "debug32");
+        this.sprite = new NGSprite(s2d, 0,0, 0xFF00FF, "pixelstar");
     }
 
-    override function update(dt:Float) 
+    override function render(e: h3d.Engine)
     {
-        #if debug
-            this.fpsText.text =  Std.string(hxd.Timer.fps());
-        #end
+        trace("Rendering From Main...");
+    }
+
+    override function update(dt:Float)
+    {
+
+        trace("Updating From Main...");
 
         this.c += 0.1;
 
