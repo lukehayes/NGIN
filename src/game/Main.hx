@@ -28,7 +28,13 @@ class Main extends hxd.App {
 
     override function render(e: h3d.Engine)
     {
-        trace("Rendering From Main...");
+        // This line is exactly the same as in hxd.App. Calling it here
+        // means it acts the same as a vanilla app - making it a 
+        // good place to override render() but add custom functionality.
+        s2d.render(e);
+
+        //s2d.renderer.begin();
+        //s2d.renderer.end();
     }
 
     override function update(dt:Float)
